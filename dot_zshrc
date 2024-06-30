@@ -9,4 +9,4 @@ function source_if_exists() {
 source_if_exists $HOME/.config/vars
 source_if_exists $HOME/.config/aliases
 
-# eval "$(chezmoi completion zsh)"
+eval $(chezmoi completion zsh)
