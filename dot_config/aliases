@@ -10,8 +10,8 @@ alias ls=$LS_CMD
 alias ll='$LS_CMD -alh'
 alias lx='$LS_CMD -x'
 alias lsx="/usr/bin/ls -F -1 | grep '*$'"
-alias cat="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
+alias cat=less
 alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/.zshrc"
 alias .a="$HOME/bin/chezmoi edit ~/.config/aliases"
 alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
