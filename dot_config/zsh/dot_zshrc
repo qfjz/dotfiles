@@ -69,11 +69,6 @@ if [[ -x $(which fzf 2> /dev/null) ]]; then
     export FZF_DEFAULT_OPTS="--ansi --info inline"
 fi
 
-eval $(chezmoi completion zsh)
-
-#############################################
-
-
 precmd() {
     print ""
 }
@@ -93,5 +88,7 @@ bindkey -M vicmd v edit-command-line
 
 # sudo dnf install zsh-syntax-highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+eval $(chezmoi completion zsh)
 
 # vim: set filetype=zsh:
