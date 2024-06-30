@@ -9,7 +9,7 @@ alias q=exit
 alias ls=$LS_CMD
 alias ll='$LS_CMD -alh'
 alias lx='$LS_CMD -x'
-alias lsx="/usr/bin/ls -F -1 | grep '*$'"  # pokazuje pliki wykonywalne w lokalizacji
+alias lsx="/usr/bin/ls -F -1 | grep '*$'"
 alias cat="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/.zshrc"

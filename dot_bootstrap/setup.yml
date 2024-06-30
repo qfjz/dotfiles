@@ -88,26 +88,26 @@
         gpgcheck: true
         enabled: true
 
-    - name: Install Docker
-      ansible.builtin.dnf:
-        name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-buildx-plugin
-          - docker-compose-plugin
-        state: present
+    # - name: Install Docker
+      # ansible.builtin.dnf:
+        # name:
+          # - docker-ce
+          # - docker-ce-cli
+          # - containerd.io
+          # - docker-buildx-plugin
+          # - docker-compose-plugin
+        # state: present
 
-    - name: Add Docker group
-      ansible.builtin.group:
-        name: docker
-        state: present
+    # - name: Add Docker group
+      # ansible.builtin.group:
+        # name: docker
+        # state: present
 
-    - name: Add user to docker group
-      ansible.builtin.user:
-        name: "{{ remote_regular_user }}"
-        groups: docker
-        append: true
+    # - name: Add user to docker group
+      # ansible.builtin.user:
+        # name: "{{ remote_regular_user }}"
+        # groups: docker
+        # append: true
 
     - name: Install Flatpak packages
       community.general.flatpak:
