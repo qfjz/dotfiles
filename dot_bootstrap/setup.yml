@@ -149,3 +149,8 @@
         remote_src: true
         mode: "0755"
         owner: "{{ remote_regular_user }}"
+
+    - name: Clone Neovim Configuration
+      ansible.builtin.git:
+        repo: https://github.com/qfjz/neovim
+        dest: "~{{ remote_regular_user }}/.config/nvim"
