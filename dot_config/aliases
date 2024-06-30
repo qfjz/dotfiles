@@ -4,3 +4,5 @@ alias t=tmux
 alias task=go-task
 alias v=nvim
 alias cls=clear
+alias ls=eza
+alias ll="eza -al"
