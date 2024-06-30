@@ -75,20 +75,24 @@ precmd() {
 
 bindkey -v
 
-autoload -U compinit
-compinit
- 
 # Uses $VISUAL editor
 autoload -z edit-command-line
 zle -N edit-command-line
-# If using emacs keybinds (CTRL-X + CTRL-E)
-#bindkey "^X^E" edit-command-line
-# If using vi keybinds (`v` in control mode)
+# Edycja komendy w edytorze
 bindkey -M vicmd v edit-command-line
+bindkey -M viins '^e' edit-command-line
 
 # sudo dnf install zsh-syntax-highlighting
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-eval $(chezmoi completion zsh)
+fpath=($HOME/.config/zsh/completions $fpath)
+
+CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+
+autoload -U compinit
+compinit
+
+zstyle ':completion:*' menu select
 
 # vim: set filetype=zsh:
