@@ -15,6 +15,7 @@
         name:
           - "@C Development Tools and Libraries"
           - "@Development Tools"
+          - age
           - autoconf
           - bzip2
           - bzip2-devel
