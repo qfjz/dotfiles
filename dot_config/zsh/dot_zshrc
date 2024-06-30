@@ -65,7 +65,7 @@ if [[ -x $(which fzf 2> /dev/null) ]]; then
     # '^[[A' Strzałka w górę
     # '^[[B' Strzałka w dół
     # bindkey '^[[A' fzf-history-widget
-    bindkey '^[[B' fzf-history-widget
+    # bindkey '^[[B' fzf-history-widget
     export FZF_DEFAULT_OPTS="--ansi --info inline"
 fi
 

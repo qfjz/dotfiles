@@ -12,7 +12,7 @@ alias lx='$LS_CMD -x'
 alias lsx="$LS_CMD -F | grep '*$'"  # pokazuje pliki wykonywalne w lokalizacji
 alias cat="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
-alias .z="$HOME/bin/chezmoi edit ~/.zshrc"
+alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/.zshrc"
 alias .a="$HOME/bin/chezmoi edit ~/.config/aliases"
 alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
 alias ca="$HOME/bin/chezmoi apply -v"
