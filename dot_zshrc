@@ -53,7 +53,7 @@ if [[ -x $(which fzf 2> /dev/null) ]]; then
             fd --type d --hidden --follow --exclude .git . "$1"
         }
     fi
-    bindkey '^[[A' fzf_history
+    bindkey '^[[A' fzf_history_widget
     export FZF_DEFAULT_OPTS="--ansi --info inline"
 fi
 
