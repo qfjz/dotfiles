@@ -13,40 +13,41 @@
     - name: Install packages
       ansible.builtin.dnf:
         name:
-          - git
-          - htop
-          - firefox
-          - gh
-          - gcc
-          - go-task
-          - ripgrep
-          - zsh
-          - fzf
-          - tmux
-          - zlib
-          - zlib-devel
-          - make
-          - patch
+          - "@C Development Tools and Libraries"
+          - "@Development Tools"
+          - autoconf
           - bzip2
           - bzip2-devel
+          - fd-find
+          - firefox
+          - fzf
+          - gcc
+          - gcc-c++
+          - gdbm-libs
+          - gh
+          - git
+          - go-task
+          - htop
+          - inotify-tools
+          - libffi-devel
+          - libnsl2
+          - libuuid-devel
+          - luarocks
+          - make
+          - ncurses-devel
+          - openssl-devel
+          - patch
+          - procs
           - readline-devel
+          - ripgrep
           - sqlite
           - sqlite-devel
-          - openssl-devel
-          - libffi-devel
-          - xz-devel
-          - libuuid-devel
-          - gdbm-libs
-          - libnsl2
-          - luarocks
+          - tmux
           - wl-clipboard
-          - fd-find
-          - gcc-c++
-          - "@Development Tools"
-          - "@C Development Tools and Libraries"
-          - autoconf
-          - ncurses-devel
-          - inotify-tools
+          - xz-devel
+          - zlib
+          - zlib-devel
+          - zsh
           - zsh-syntax-highlighting
         state: present
 
