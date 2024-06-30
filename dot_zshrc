@@ -1,0 +1,12 @@
+# ZSH
+
+function source_if_exists() {
+    if test -r "$1"; then
+        . "$1"
+    fi
+}
+
+source_if_exists $HOME/.config/vars
+source_if_exists $HOME/.config/aliases
+
+# eval "$(chezmoi completion zsh)"
