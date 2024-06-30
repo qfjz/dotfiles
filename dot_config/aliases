@@ -4,5 +4,14 @@ alias t=tmux
 alias task=go-task
 alias v=nvim
 alias cls=clear
+alias q=exit
 alias ls=eza
 alias ll="eza -al"
+alias cat="bat --wrap character --paging=always --plain --pager 'less -FXR'"
+alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
+alias .z="$HOME/bin/chezmoi edit ~/.zshrc"
+alias .a="$HOME/bin/chezmoi edit ~/.config/aliases"
+alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
+alias ca="$HOME/bin/chezmoi apply -v"
+alias ce="$HOME/bin/chezmoi edit"
+alias cdiff="$HOME/bin/chezmoi diff"
