@@ -21,8 +21,15 @@ HIST_STAMPS="mm/dd/yyyy"
 HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|cd|cd ..|cd..)"
 
 # $ man zshoptions
+unsetopt MENU_COMPLETE
+unsetopt FLOWCONTROL
+
+setopt ALWAYS_TO_END
 setopt APPEND_HISTORY
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD
 setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
@@ -30,13 +37,15 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt INC_APPEND_HISTORY
-setopt HIST_FIND_NO_DUPS
 setopt HIST_VERIFY
-setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt INTERACTIVE_COMMENTS
+setopt PROMPT_SUBST
+setopt SHARE_HISTORY
 
+# ALT-C: fzf-cd-widget
+# CTRL-T: fzf-file-widget
+# CRTL-R: fzf-history-widget
 if [[ -x $(which fzf 2> /dev/null) ]]; then
     source /usr/share/fzf/shell/key-bindings.zsh
 
@@ -53,8 +62,36 @@ if [[ -x $(which fzf 2> /dev/null) ]]; then
             fd --type d --hidden --follow --exclude .git . "$1"
         }
     fi
-    bindkey '^[[A' fzf_history_widget
+    # '^[[A' Strzałka w górę
+    # '^[[B' Strzałka w dół
+    # bindkey '^[[A' fzf-history-widget
+    bindkey '^[[B' fzf-history-widget
     export FZF_DEFAULT_OPTS="--ansi --info inline"
 fi
 
 eval $(chezmoi completion zsh)
+
+#############################################
+
+
+precmd() {
+    print ""
+}
+
+bindkey -v
+
+autoload -U compinit
+compinit
+ 
+# Uses $VISUAL editor
+autoload -z edit-command-line
+zle -N edit-command-line
+# If using emacs keybinds (CTRL-X + CTRL-E)
+#bindkey "^X^E" edit-command-line
+# If using vi keybinds (`v` in control mode)
+bindkey -M vicmd v edit-command-line
+
+# sudo dnf install zsh-syntax-highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# vim: set filetype=zsh:

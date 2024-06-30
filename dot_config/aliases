@@ -1,3 +1,4 @@
+# aliases
 alias c=chezmoi
 alias n=nvim
 alias t=tmux
@@ -5,8 +6,10 @@ alias task=go-task
 alias v=nvim
 alias cls=clear
 alias q=exit
-alias ls=eza
-alias ll="eza -al"
+alias ls=$LS_CMD
+alias ll='$LS_CMD -alh'
+alias lx='$LS_CMD -x'
+alias lsx="$LS_CMD -F | grep '*$'"  # pokazuje pliki wykonywalne w lokalizacji
 alias cat="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias .z="$HOME/bin/chezmoi edit ~/.zshrc"
@@ -15,3 +18,5 @@ alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
 alias ca="$HOME/bin/chezmoi apply -v"
 alias ce="$HOME/bin/chezmoi edit"
 alias cdiff="$HOME/bin/chezmoi diff"
+
+# vim: set filetype=zsh:

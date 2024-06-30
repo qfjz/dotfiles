@@ -47,6 +47,7 @@
           - autoconf
           - ncurses-devel
           - inotify-tools
+          - zsh-syntax-highlighting
         state: present
 
     - name: Change shell to zsh
