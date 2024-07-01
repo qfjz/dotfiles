@@ -162,3 +162,15 @@
       ansible.builtin.git:
         repo: https://github.com/qfjz/neovim
         dest: "~{{ remote_regular_user }}/.config/nvim"
+
+    - name: Check if repository fedora-bin exists
+      ansible.builtin.shell: "ls ~{{ remote_regular_user }}/.local/bin/F{{ ansible_distribution_major_version }}"
+      register: fedora_bin_exists
+      ignore_errors: true
+      changed_when: false
+
+    - name: Download additional software
+      when: fedora_bin_exists is failed
+      ansible.builtin.git:
+        repo: https://github.com/qfjz/fedora-bin
+        dest: "~{{ remote_regular_user }}/.local/bin/F{{ ansible_distribution_major_version }}"
