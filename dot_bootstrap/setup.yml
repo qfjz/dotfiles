@@ -174,3 +174,9 @@
       ansible.builtin.git:
         repo: https://github.com/qfjz/fedora-bin
         dest: "~{{ remote_regular_user }}/.local/bin/F{{ ansible_distribution_major_version }}"
+        depth: 1
+        single_branch: yes
+        version: "F{{ ansible_distribution_major_version }}"
+
+    - name: Chown directory
+      ansible.builtin.shell: "chown -R {{ remote_regular_user }}:{{ remote_regular_user }} ~{{ remote_regular_user }}/.local/bin/"
