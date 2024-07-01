@@ -1,0 +1,100 @@
+# ZSH
+
+function source_if_exists() {
+    if test -r "$1"; then
+        . "$1"
+    fi
+}
+
+source_if_exists $HOME/.config/vars
+source_if_exists $HOME/.config/aliases
+source_if_exists $HOME/.config/zsh/host/$(hostname)
+
+HISTFILE=${HOME}/.zsh_history
+HISTSIZE=100000
+SAVEHIST=${HISTSIZE}
+
+HISTDUP=erase
+
+HIST_STAMPS="mm/dd/yyyy"
+
+HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|cd|cd ..|cd..)"
+
+# $ man zshoptions
+unsetopt MENU_COMPLETE
+unsetopt FLOWCONTROL
+
+setopt ALWAYS_TO_END
+setopt APPEND_HISTORY
+setopt AUTO_MENU
+setopt COMPLETE_IN_WORD
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt INTERACTIVE_COMMENTS
+setopt PROMPT_SUBST
+setopt SHARE_HISTORY
+
+# ALT-C: fzf-cd-widget
+# CTRL-T: fzf-file-widget
+# CRTL-R: fzf-history-widget
+if [[ -x $(which fzf 2> /dev/null) ]]; then
+    source /usr/share/fzf/shell/key-bindings.zsh
+
+    if which fd &>/dev/null
+    then
+        export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --color=always"
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+        _fzf_compgen_path() {
+            fd --hidden --follow --exclude .git . "$1"
+        }
+        _fzf_compgen_dir() {
+            fd --type d --hidden --follow --exclude .git . "$1"
+        }
+    fi
+    # '^[[A' Strzałka w górę
+    # '^[[B' Strzałka w dół
+    # bindkey '^[[A' fzf-history-widget
+    # bindkey '^[[B' fzf-history-widget
+    export FZF_DEFAULT_OPTS="--ansi --info inline"
+fi
+
+precmd() {
+    print ""
+}
+
+bindkey -v
+
+# Uses $VISUAL editor
+autoload -z edit-command-line
+zle -N edit-command-line
+# Edycja komendy w edytorze
+bindkey -M vicmd v edit-command-line
+bindkey -M viins '^e' edit-command-line
+
+# sudo dnf install zsh-syntax-highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+fpath=($HOME/.config/zsh/completions $fpath)
+
+CASE_SENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
+
+autoload -U compinit
+compinit
+
+zstyle ':completion:*' menu select
+
+which starship &>/dev/null && eval "$(starship init zsh)"
+
+# vim: set filetype=zsh:
