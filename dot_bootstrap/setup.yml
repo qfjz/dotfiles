@@ -126,7 +126,6 @@
           - org.signal.Signal
           - org.tenacityaudio.Tenacity
           - org.videolan.VLC
-
         state: present
 
     - name: Ensure fonts directory
@@ -177,6 +176,11 @@
         depth: 1
         single_branch: yes
         version: "F{{ ansible_distribution_major_version }}"
+      ignore_errors: true
 
-    - name: Chown directory
-      ansible.builtin.shell: "chown -R {{ remote_regular_user }}:{{ remote_regular_user }} ~{{ remote_regular_user }}/.local/bin/"
+    - name: Chown .local/bin directory
+      ansible.builtin.file:
+        path: "~{{ remote_regular_user }}/.local/bin"
+        state: directory
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"
