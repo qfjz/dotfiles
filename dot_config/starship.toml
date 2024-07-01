@@ -1,0 +1,90 @@
+palette = 'foo'
+
+# Define custom colors
+[palettes.foo]
+# Overwrite existing color
+blue = '21'
+# Define new color
+mustard = '#af8700'
+
+[character]
+success_symbol = '[](bright-white)'
+error_symbol = '[](red)'
+vicmd_symbol = '[](bright-white) '
+vimcmd_visual_symbol = '[](yellow)'
+vimcmd_replace_one_symbol = '[](purple)'
+vimcmd_replace_symbol = '[](purple)'
+
+[package]
+disabled = true
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+read_only = " 🔒"
+read_only_style = "red"
+style = 'white'
+format = "[$path]($style)[$read_only]($read_only_style)[$lock_symbol]($lock_style) "
+
+[hostname]
+ssh_only = false
+trim_at=''
+# ssh_symbol='🌐'
+ssh_symbol='🌏'
+format = '[$hostname $ssh_symbol]($style) '
+# format = "[$hostname]($style) "
+style = "white"
+
+[localip]
+ssh_only = false
+format = "[$localipv4]($style) "
+style = "dimmed white"
+# style = "black"
+disabled = false
+
+[username]
+style_user = "bright-white"
+style_root = "black bold"
+format = "[$user]($style)@"
+disabled = false
+show_always = true
+
+[time]
+format = "[$time]($style) "
+disabled = false
+style = "dimmed white"
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+style = 'bold dimmed white'
+symbol = '🌱 '
+
+[git_status]
+# disabled = false
+style = 'bold bright-white'
+format = '([\[$all_status$ahead_behind\]]($style) )'
+# conflicted = '🏳'
+# ahead = '🏎💨'
+# behind = '😰'
+# diverged = '😵'
+# up_to_date = '✓'
+# untracked = '🤷'
+# stashed = '📦'
+# modified = '📝'
+# staged = '[++\($count\)](green)'
+# renamed = '👅'
+# deleted = '🗑'
+
+[shell]
+fish_indicator = '󰈺 '
+bash_indicator = '_'
+zsh_indicator = 'zsh'
+unknown_indicator = '?'
+style = 'cyan bold'
+disabled = false
+
+[custom.foo]
+command = 'echo HOME' # shows output of command
+detect_files = ['.zshrc'] # can specify filters but wildcards are not supported
+when = ''' test "$HOME" = "$PWD" '''
+format = '[$output]($style) '
