@@ -95,6 +95,7 @@ compinit
 
 zstyle ':completion:*' menu select
 
+# starship prompt
 which starship &>/dev/null && eval "$(starship init zsh)"
 
 # vim: set filetype=zsh:
