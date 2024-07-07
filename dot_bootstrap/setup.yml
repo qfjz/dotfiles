@@ -93,6 +93,7 @@
           - yt-dlp
           - zlib
           - zlib-devel
+          - zoxide
           - zsh
           - zsh-syntax-highlighting
         state: present

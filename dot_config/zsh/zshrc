@@ -115,6 +115,8 @@ alias cde="$EDITOR ~/.config/bmdirs"
 alias ipa="$HOME/.local/bin/ipa.sh"
 alias ipn="$HOME/.local/bin/ipn.sh"
 
+alias -s .zshrc=$EDITOR
+
 # ALT-C: fzf-cd-widget
 # CTRL-T: fzf-file-widget
 # CRTL-R: fzf-history-widget
@@ -173,5 +175,8 @@ zstyle ':completion:*' menu select
 
 # starship prompt
 which starship &>/dev/null && eval "$(starship init zsh)"
+
+# zoxide cd
+which zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 # vim: set filetype=zsh:
