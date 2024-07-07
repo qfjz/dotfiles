@@ -21,7 +21,7 @@ alias lx='$LS_CMD -x'
 alias lsx="/usr/bin/ls -F -1 | grep '*$'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias cat=less
-alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/.zshrc"
+alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/zshrc"
 alias .a="$HOME/bin/chezmoi edit ~/.config/aliases && $HOME/bin/chezmoi apply -v"
 alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
 alias .b="$HOME/bin/chezmoi edit ~/.bootstrap/setup.yml"
