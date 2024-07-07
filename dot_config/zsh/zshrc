@@ -1,5 +1,4 @@
-# ZSH
-
+# ZSHRC
 # VARS
 export FEDORA_VER=$($HOME/bin/fedora_ver.sh)
 export EDITOR=nvim
@@ -36,7 +35,6 @@ PROMPT='%F{green}%n@%F{cyan}%M:%~%f '
 #   Replace q, n, and y with whatever values you want
 RPROMPT='%W %* %(?.√.%?)'
 
-# vim: set filetype=sh:
 function source_if_exists() {
     if test -r "$1"; then
         . "$1"
@@ -102,8 +100,6 @@ alias lsx="/usr/bin/ls -F -1 | grep '*$'"
 alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
 alias cat=less
 alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/zshrc"
-alias .a="$HOME/bin/chezmoi edit ~/.config/aliases && $HOME/bin/chezmoi apply -v"
-alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
 alias .b="$HOME/bin/chezmoi edit ~/.bootstrap/setup.yml"
 alias .s="$EDITOR ~/.ssh/config"
 alias ca="$HOME/bin/chezmoi apply -v"
