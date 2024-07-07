@@ -1,13 +1,48 @@
 # ZSH
 
+# VARS
+export FEDORA_VER=$($HOME/bin/fedora_ver.sh)
+export EDITOR=nvim
+export VISUAL=nvim
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$HOME/.scripts/bin:$PATH"
+export PATH="$HOME/.local/bin/F$FEDORA_VER:$PATH"
+
+export LS_COLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*zshrc=32:*.tar.gz=4;33'
+
+if [[ ! -z $(command -v eza) ]]; then
+	LS_CMD=eza
+else
+	LC_CMD=ls
+fi
+
+# export PS1="%F{green}%n@%F{cyan}%M:%~%f "
+# All escape codes at http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+ 
+# %F{color} sets the color
+# %n is username
+# %M is full hostname
+# %f resets formatting
+# %~ is current working directory
+PROMPT='%F{green}%n@%F{cyan}%M:%~%f '
+ 
+# %W is the date
+# %* is time
+# %? is the return code of previous command
+# %(q.n.y) is a ternary that checks the variable in question %q
+#   and outputs value n if it's false or 0, and value y is output
+#   when %q is non-zero.
+#   Replace q, n, and y with whatever values you want
+RPROMPT='%W %* %(?.√.%?)'
+
+# vim: set filetype=sh:
 function source_if_exists() {
     if test -r "$1"; then
         . "$1"
     fi
 }
 
-source_if_exists $HOME/.config/vars
-source_if_exists $HOME/.config/aliases
 source_if_exists $HOME/.config/zsh/host/$(hostname)
 
 HISTFILE=${HOME}/.zsh_history
@@ -42,6 +77,47 @@ setopt INC_APPEND_HISTORY
 setopt INTERACTIVE_COMMENTS
 setopt PROMPT_SUBST
 setopt SHARE_HISTORY
+
+# aliases
+alias ...="cd ../.."
+alias ..="cd .."
+alias c=chezmoi
+alias n=nvim
+alias t=tmux
+alias task=go-task
+alias v=nvim
+alias cls=clear
+alias g=git
+alias ps=procs
+alias mutt=neomutt
+alias more=less
+alias p=" gopass"
+alias pass=" gopass"
+alias df="df -T -h -x tmpfs -x devtmpfs -x squashfs"
+alias q=exit
+alias ls=$LS_CMD
+alias ll='$LS_CMD -alh'
+alias lx='$LS_CMD -x'
+alias lsx="/usr/bin/ls -F -1 | grep '*$'"
+alias less="bat --wrap character --paging=always --plain --pager 'less -FXR'"
+alias cat=less
+alias .z="$HOME/bin/chezmoi edit ~/.config/zsh/zshrc"
+alias .a="$HOME/bin/chezmoi edit ~/.config/aliases && $HOME/bin/chezmoi apply -v"
+alias .v="$HOME/bin/chezmoi edit ~/.config/vars"
+alias .b="$HOME/bin/chezmoi edit ~/.bootstrap/setup.yml"
+alias .s="$EDITOR ~/.ssh/config"
+alias ca="$HOME/bin/chezmoi apply -v"
+alias ce="$HOME/bin/chezmoi edit"
+alias cdiff="$HOME/bin/chezmoi diff"
+alias cdb="source $HOME/.local/bin/cdb.sh"
+alias cda="source $HOME/.local/bin/cdba.sh"
+alias cdba="source $HOME/.local/bin/cdba.sh"
+alias cdbd="source $HOME/.local/bin/cdbd.sh"
+alias cdd="source $HOME/.local/bin/cdbd.sh"
+alias cdbe="$EDITOR ~/.config/bmdirs"
+alias cde="$EDITOR ~/.config/bmdirs"
+alias ipa="$HOME/.local/bin/ipa.sh"
+alias ipn="$HOME/.local/bin/ipn.sh"
 
 # ALT-C: fzf-cd-widget
 # CTRL-T: fzf-file-widget
