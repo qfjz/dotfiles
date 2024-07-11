@@ -126,49 +126,6 @@
         groups: docker
         append: true
 
-    - name: Ensure fonts directory
-      ansible.builtin.file:
-        path: "~{{ remote_regular_user }}/.fonts"
-        state: directory
-        mode: "0755"
-        owner: "{{ remote_regular_user }}"
-
-    - name: Check if Jetbrains Mono exists
-      ansible.builtin.shell: "ls ~{{ remote_regular_user }}/.fonts/JetBrainsMonoNerd*FontMono*"
-      register: jetbrains_mono_exists
-      ignore_errors: true
-      changed_when: false
-
-    - name: Download Jetbrains mono
-      when: jetbrains_mono_exists is failed
-      ansible.builtin.unarchive:
-        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-        dest: "~{{ remote_regular_user }}/.fonts/"
-        remote_src: true
-        mode: "0755"
-        owner: "{{ remote_regular_user }}"
-
-    - name: Check if Cascadia Code exists
-      ansible.builtin.shell: "ls ~{{ remote_regular_user }}/.fonts/Cascadia*"
-      register: cascadia_code_exists
-      ignore_errors: true
-      changed_when: false
-
-    - name: Download Cascadia Code
-      when: cascadia_code_exists is failed
-      ansible.builtin.unarchive:
-        src: https://github.com/microsoft/cascadia-code/releases/download/v2404.23/CascadiaCode-2404.23.zip
-        dest: "~{{ remote_regular_user }}/.fonts/"
-        remote_src: true
-        mode: "0755"
-        owner: "{{ remote_regular_user }}"
-
-    - name: Install Cascadia Code fonts.
-      ansible.builtin.command:
-        cmd: "~{{ remote_regular_user }}/.local/bin/install-cascadia-code-fonts.sh"
-      become: yes
-      become_user: "{{ remote_regular_user }}"
-
     - name: Check if Neovim config exists
       ansible.builtin.shell: "ls ~{{ remote_regular_user }}/.config/nvim"
       register: neovim_config_exists
