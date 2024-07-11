@@ -81,12 +81,15 @@ setopt SHARE_HISTORY
 alias ...="cd ../.."
 alias ..="cd .."
 alias c=chezmoi
+alias cd-tmux=$HOME/bin/cd-tmux.sh
+alias cdb-tmux=$HOME/bin/cdb-tmux.sh
 alias n=nvim
 alias t=tmux
 alias task=go-task
 alias v=nvim
 alias cls=clear
 alias g=git
+alias gi=$HOME/bin/gi.sh
 alias ps=procs
 alias mutt=neomutt
 alias more=less
