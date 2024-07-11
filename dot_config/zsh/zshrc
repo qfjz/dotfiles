@@ -90,6 +90,7 @@ alias v=nvim
 alias cls=clear
 alias g=git
 alias gi=$HOME/bin/gi.sh
+alias notes=$HOME/bin/notes.sh
 alias ps=procs
 alias mutt=neomutt
 alias more=less
