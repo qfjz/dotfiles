@@ -9,6 +9,11 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH="$HOME/.scripts/bin:$PATH"
 export PATH="$HOME/.local/bin/F$FEDORA_VER:$PATH"
 
+# Neorg workspaces
+export NEORG_HOME=$HOME/Notes/neorg/home
+export NEORG_WORK=$HOME/Notes/norg/work
+export NEORG_PUBLIC=$HOME/Notes/neorg/public
+
 export LS_COLORS='di=1;35:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*zshrc=32:*.tar.gz=4;33'
 
 if [[ ! -z $(command -v eza) ]]; then
