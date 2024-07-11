@@ -1,0 +1,48 @@
+---
+- name: Machine setup
+  hosts: localhost
+  become: true
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: Get my user
+      ansible.builtin.set_fact:
+        remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+    - name: Install packages
+      ansible.builtin.dnf:
+        name:
+          - "@C Development Tools and Libraries"
+          - "@Development Tools"
+          - autoconf
+          - bzip2-devel
+          - cargo
+          - cmake
+          - compat-lua
+          - file-devel
+          - fmt-devel
+          - gcc
+          - gcc-c++
+          - gdbm-devel
+          - gdbm-libs
+          - golang
+          - gpgme-devel
+          - libffi-devel
+          - libnsl2
+          - libuuid-devel
+          - lua-devel
+          - luarocks
+          - make
+          - meson
+          - ncurses-devel
+          - ninja-build
+          - openssl-devel
+          - patch
+          - python3-devel
+          - readline-devel
+          - sqlite-devel
+          - xz-devel
+          - zlib
+          - zlib-devel
+        state: present
