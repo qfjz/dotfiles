@@ -15,3 +15,5 @@
         name:
           - alacritty
           - okular
+          - @kde-desktop
+          - @kde-desktop-environment
