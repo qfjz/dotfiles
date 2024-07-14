@@ -10,6 +10,8 @@ case $ODP in
         echo
         $HOME/bin/install-i3.sh
         ;;
+    n)
+        ;;
     *)
         echo
         $HOME/bin/install-i3.sh
@@ -22,6 +24,8 @@ case $ODP in
     t)
         echo
         $HOME/bin/install-kde.sh
+        ;;
+    n)
         ;;
     *)
         echo
@@ -36,6 +40,8 @@ case $ODP in
         echo
         $HOME/bin/install-kde.sh
         ;;
+    n)
+        ;;
     *)
         echo
         $HOME/bin/install-kde.sh
@@ -49,6 +55,8 @@ case $ODP in
         echo
         $HOME/bin/install-kde.sh
         ;;
+    n)
+        ;;
     *)
         echo
         $HOME/bin/install-kde.sh
@@ -61,6 +69,8 @@ case $ODP in
     t)
         echo
         $HOME/bin/install-kde.sh
+        ;;
+    n)
         ;;
     *)
         echo
