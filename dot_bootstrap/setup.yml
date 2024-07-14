@@ -39,15 +39,18 @@
           - neofetch
           - neomutt
           - neovim
+          - net-tools
           - nmap
           - oathtool
           - opendoas
+          - openvpn
           - p7zip
           - picocom
           - procs
           - pv
           - pwgen
           - ripgrep
+          - rsync
           - sd
           - skim
           - sqlite
@@ -58,6 +61,8 @@
           - uucp
           - w3m
           - w3m-img
+          - wget
+          - wireguard-tools
           - wireshark-cli
           - yt-dlp
           - zlib
