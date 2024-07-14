@@ -187,3 +187,9 @@
         cmd: "~{{ remote_regular_user }}/.local/bin/zshrc.sh"
       become: yes
       become_user: "{{ remote_regular_user }}"
+
+    - name: Create ~/.config/chezmoi/installed
+      ansible.builtin.command:
+        cmd: "touch $HOME/.config/chezmoi/installed"
+      become: yes
+      become_user: "{{ remote_regular_user }}"
