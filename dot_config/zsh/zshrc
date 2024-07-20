@@ -49,6 +49,9 @@ function source_if_exists() {
 
 source_if_exists $HOME/.config/zsh/host/$(hostname)
 
+# sudo dnf install zsh-syntax-highlighting
+source_if_exists /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000
 SAVEHIST=${HISTSIZE}
@@ -170,9 +173,6 @@ bindkey -M viins '^e' edit-command-line
 # Home / End
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
-
-# sudo dnf install zsh-syntax-highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=($HOME/.config/zsh/completions $fpath)
 
